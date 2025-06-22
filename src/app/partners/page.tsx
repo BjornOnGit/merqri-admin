@@ -1,11 +1,13 @@
 import { Suspense } from "react"
 import { PartnerList } from "@/components/partners"
-import { ThemedLayoutV2 } from "@refinedev/antd"
+import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
 import { Header } from "@/components/header"
+
+export const dynamic = "force-dynamic"
 
 function PartnerListContent() {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />}>
+    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
       <PartnerList />
     </ThemedLayoutV2>
   )

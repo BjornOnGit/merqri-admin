@@ -1,11 +1,11 @@
 import { Suspense } from "react"
 import { SupportList } from "@/components/support"
-import { ThemedLayoutV2 } from "@refinedev/antd"
+import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
 import { Header } from "@/components/header"
 
 function SupportListContent() {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />}>
+    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
       <SupportList />
     </ThemedLayoutV2>
   )

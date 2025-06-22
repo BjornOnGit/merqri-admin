@@ -15,6 +15,8 @@ import {
   MessageOutlined,
 } from "@ant-design/icons"
 
+export const dynamic = "force-dynamic"
+
 export default function RefineProvider({ children }: { children: React.ReactNode }) {
   return (
     <Refine
