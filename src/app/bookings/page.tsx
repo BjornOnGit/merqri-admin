@@ -1,12 +1,20 @@
-"use client"
-import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
-import { Header } from "@/components/header"
+import { Suspense } from "react"
 import { BookingList } from "@/components/bookings"
+import { ThemedLayoutV2 } from "@refinedev/antd"
+import { Header } from "@/components/header"
 
-export default function BookingsPage() {
+function BookingListContent() {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
+    <ThemedLayoutV2 Header={() => <Header sticky />}>
       <BookingList />
     </ThemedLayoutV2>
+  )
+}
+
+export default function BookingListPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookingListContent />
+    </Suspense>
   )
 }

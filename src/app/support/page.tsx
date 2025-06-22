@@ -1,12 +1,20 @@
-"use client"
-import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
-import { Header } from "@/components/header"
+import { Suspense } from "react"
 import { SupportList } from "@/components/support"
+import { ThemedLayoutV2 } from "@refinedev/antd"
+import { Header } from "@/components/header"
 
-export default function SupportPage() {
+function SupportListContent() {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
+    <ThemedLayoutV2 Header={() => <Header sticky />}>
       <SupportList />
     </ThemedLayoutV2>
+  )
+}
+
+export default function SupportListPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SupportListContent />
+    </Suspense>
   )
 }
