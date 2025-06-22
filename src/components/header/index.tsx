@@ -1,65 +1,55 @@
 "use client";
 
-import { ColorModeContext } from "@contexts/color-mode";
-import type { RefineThemedLayoutV2HeaderProps } from "@refinedev/antd";
-import { useGetIdentity } from "@refinedev/core";
-import {
-  Avatar,
-  Layout as AntdLayout,
-  Space,
-  Switch,
-  theme,
-  Typography,
-} from "antd";
-import React, { useContext } from "react";
+import type React from "react"
+import { Layout, Typography, Space, Avatar } from "antd"
+import { useGetIdentity } from "@refinedev/core"
+import { UserOutlined } from "@ant-design/icons"
 
-const { Text } = Typography;
-const { useToken } = theme;
+const { Header: AntdHeader } = Layout
+const { Text } = Typography
 
-type IUser = {
-  id: number;
-  name: string;
-  avatar: string;
-};
-
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-  sticky = true,
-}) => {
-  const { token } = useToken();
-  const { data: user } = useGetIdentity<IUser>();
-  const { mode, setMode } = useContext(ColorModeContext);
-
-  const headerStyles: React.CSSProperties = {
-    backgroundColor: token.colorBgElevated,
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    padding: "0px 24px",
-    height: "64px",
-  };
-
-  if (sticky) {
-    headerStyles.position = "sticky";
-    headerStyles.top = 0;
-    headerStyles.zIndex = 1;
-  }
+export const Header: React.FC<{ sticky?: boolean }> = ({ sticky }) => {
+  const { data: user } = useGetIdentity<{
+    id: string
+    email: string
+    full_name?: string
+  }>()
 
   return (
-    <AntdLayout.Header style={headerStyles}>
+    <AntdHeader
+      style={{
+        backgroundColor: "#27285C", // Navy blue from style guide
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "0 24px",
+        position: sticky ? "sticky" : "static",
+        top: 0,
+        zIndex: 999,
+      }}
+    >
       <Space>
-        <Switch
-          checkedChildren="🌛"
-          unCheckedChildren="🔆"
-          onChange={() => setMode(mode === "light" ? "dark" : "light")}
-          defaultChecked={mode === "dark"}
-        />
-        {(user?.name || user?.avatar) && (
-          <Space style={{ marginLeft: "8px" }} size="middle">
-            {user?.name && <Text strong>{user.name}</Text>}
-            {user?.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
-          </Space>
-        )}
+        <Text
+          style={{
+            fontSize: "20px",
+            fontWeight: "bold",
+            color: "#FFFFFF",
+          }}
+        >
+          MerQri Admin
+        </Text>
       </Space>
-    </AntdLayout.Header>
-  );
-};
+
+      <Space>
+        <Text style={{ color: "#FFFFFF" }}>Welcome, {user?.full_name || user?.email || "Admin"}</Text>
+        <Avatar
+          style={{
+            backgroundColor: "#F2800A", // Orange from style guide
+            color: "#FFFFFF",
+          }}
+          icon={<UserOutlined />}
+        />
+      </Space>
+    </AntdHeader>
+  )
+}

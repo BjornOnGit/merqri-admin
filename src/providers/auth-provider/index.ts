@@ -1,0 +1,1 @@
+export { authProviderClient as authProvider } from "./auth-provider.client";

@@ -1,12 +1,12 @@
 "use client"
 import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
 import { Header } from "@/components/header"
-import { Dashboard } from "@/components/dashboard"
+import { ContactEdit } from "@/components/contacts"
 
-export default function IndexPage() {
+export default function ContactEditPage() {
   return (
     <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
-      <Dashboard />
+      <ContactEdit />
     </ThemedLayoutV2>
   )
 }
