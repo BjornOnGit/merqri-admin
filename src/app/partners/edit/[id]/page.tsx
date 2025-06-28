@@ -1,12 +1,23 @@
 "use client"
-import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
-import { Header } from "@/components/header"
-import { PartnerEdit } from "@/components/partners"
 
-export default function PartnerEditPage() {
+import { Suspense } from "react"
+import { AdminLayout } from "@/components/layout/AdminLayout"
+import { PartnerEdit } from "@/components/partners/edit"
+
+export const dynamic = "force-dynamic"
+
+function PartnerEditContent({ params }: { params: { id: string } }) {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
+    <AdminLayout>
       <PartnerEdit />
-    </ThemedLayoutV2>
+    </AdminLayout>
+  )
+}
+
+export default function PartnerEditPage({ params }: { params: { id: string } }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PartnerEditContent params={params} />
+    </Suspense>
   )
 }

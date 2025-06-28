@@ -1,5 +1,4 @@
 import type React from "react"
-import { RefineKbarProvider } from "@refinedev/kbar"
 import "@refinedev/antd/dist/reset.css"
 import { ConfigProvider, App as AntdApp } from "antd"
 import { ColorModeContextProvider } from "@/contexts/color-mode"
@@ -14,7 +13,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <RefineKbarProvider>
           <ColorModeContextProvider>
             <ConfigProvider theme={merqriTheme}>
               <AntdApp>
@@ -24,7 +22,6 @@ export default function RootLayout({
               </AntdApp>
             </ConfigProvider>
           </ColorModeContextProvider>
-        </RefineKbarProvider>
       </body>
     </html>
   )

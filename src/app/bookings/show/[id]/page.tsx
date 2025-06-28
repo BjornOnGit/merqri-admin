@@ -3,7 +3,7 @@ import { BookingShow } from "@/components/bookings"
 import { AdminLayout } from "@/components/layout/AdminLayout"
 
 export const dynamic = "force-dynamic"
-function BookingShowContent() {
+function BookingShowContent({ params }: { params: { id: string } }) {
   return (
     <AdminLayout>
       <BookingShow />
@@ -11,10 +11,10 @@ function BookingShowContent() {
   )
 }
 
-export default function BookingShowPage() {
+export default function BookingShowPage({ params }: { params: { id: string } }) {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <BookingShowContent />
+      <BookingShowContent params={params} />
     </Suspense>
   )
 }

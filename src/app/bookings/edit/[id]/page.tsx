@@ -4,7 +4,7 @@ import { AdminLayout } from "@/components/layout/AdminLayout"
 
 export const dynamic = "force-dynamic"
 
-function BookingEditContent() {
+function BookingEditContent({ params }: { params: { id: string } }) {
   return (
     <AdminLayout>
       <BookingEdit />
@@ -12,10 +12,10 @@ function BookingEditContent() {
   )
 }
 
-export default function BookingEditPage() {
+export default function BookingEditPage({ params }: { params: { id: string } }) {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <BookingEditContent />
+      <BookingEditContent params={params} />
     </Suspense>
   )
 }

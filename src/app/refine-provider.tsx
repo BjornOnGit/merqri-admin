@@ -1,6 +1,5 @@
 "use client"
 import { Refine } from "@refinedev/core"
-import { RefineKbar } from "@refinedev/kbar";
 import { useNotificationProvider } from "@refinedev/antd";
 import routerBindings from "@refinedev/nextjs-router";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
@@ -82,9 +81,6 @@ export default function RefineProvider({ children }: { children: React.ReactNode
                   }}
                 >
                   {children}
-                  <RefineKbar />
-                  <RefineKbar />
-                  <RefineKbar />
                 </Refine>
   );
 }

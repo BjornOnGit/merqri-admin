@@ -1,12 +1,23 @@
 "use client"
-import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
-import { Header } from "@/components/header"
-import { ContactShow } from "@/components/contacts"
 
-export default function ContactShowPage() {
+import { Suspense } from "react"
+import { AdminLayout } from "@/components/layout/AdminLayout"
+import { ContactShow } from "@/components/contacts/show"
+
+export const dynamic = "force-dynamic"
+
+function ContactShowContent({ params }: { params: { id: string } }) {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
+    <AdminLayout>
       <ContactShow />
-    </ThemedLayoutV2>
+    </AdminLayout>
+  )
+}
+
+export default function ContactShowPage({ params }: { params: { id: string } }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactShowContent params={params} />
+    </Suspense>
   )
 }

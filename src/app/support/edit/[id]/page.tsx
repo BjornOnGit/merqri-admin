@@ -1,12 +1,23 @@
 "use client"
-import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
-import { Header } from "@/components/header"
-import { SupportEdit } from "@/components/support"
 
-export default function SupportEditPage() {
+import { Suspense } from "react"
+import { AdminLayout } from "@/components/layout/AdminLayout"
+import { SupportEdit } from "@/components/support/edit"
+
+export const dynamic = "force-dynamic"
+
+function SupportEditContent({ params }: { params: { id: string } }) {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
+    <AdminLayout>
       <SupportEdit />
-    </ThemedLayoutV2>
+    </AdminLayout>
+  )
+}
+
+export default function SupportEditPage({ params }: { params: { id: string } }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SupportEditContent params={params} />
+    </Suspense>
   )
 }
