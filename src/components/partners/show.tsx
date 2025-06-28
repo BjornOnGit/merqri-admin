@@ -122,29 +122,44 @@ export const PartnerShow: React.FC = () => {
         </Col>
 
         <Col xs={24}>
-          <Card title="Services & Additional Information">
+          <Card title="Services & Insurance Information">
             <Row gutter={[16, 16]}>
               <Col xs={24} md={12}>
                 <div>
                   <Text strong>Services Offered:</Text>
                   <br />
-                  <div style={{ marginTop: 8 }}>
-                    {record?.services && <TagField value="Local" color="blue" />}
+                  <div style={{ marginTop: 8, display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                    {record?.residential_moving && <TagField value="Residential Moving" color="blue" />}
                     {record?.commercial_moving && <TagField value="Commercial Moving" color="green" />}
                     {record?.long_distance && <TagField value="Long Distance" color="orange" />}
                     {record?.packing_services && <TagField value="Packing Services" color="purple" />}
                     {record?.storage_services && <TagField value="Storage Services" color="cyan" />}
+                    {!record?.residential_moving &&
+                      !record?.commercial_moving &&
+                      !record?.long_distance &&
+                      !record?.packing_services &&
+                      !record?.storage_services && <Text type="secondary">No services selected</Text>}
                   </div>
                 </div>
               </Col>
               <Col xs={24} md={12}>
-                <div>
-                  <Text strong>Insurance Coverage:</Text>
-                  <br />
-                  <TagField 
-                  value={record?.has_insurance ? "True" : "False"}
-                  color={record?.has_insurance ? "green" : "red"} />
-                </div>
+                <Space direction="vertical" size="middle" style={{ width: "100%" }}>
+                  <div>
+                    <Text strong>Has Insurance:</Text>
+                    <br />
+                    <TagField
+                      value={record?.has_insurance ? "Yes" : "No"}
+                      color={record?.has_insurance ? "green" : "red"}
+                    />
+                  </div>
+                  {record?.has_insurance && record?.insurance_coverage && (
+                    <div>
+                      <Text strong>Insurance Coverage Details:</Text>
+                      <br />
+                      <TextField value={record?.insurance_coverage} />
+                    </div>
+                  )}
+                </Space>
               </Col>
             </Row>
 

@@ -12,6 +12,7 @@ import {
   UserOutlined,
   CustomerServiceOutlined,
   MessageOutlined,
+  CheckCircleOutlined,
 } from "@ant-design/icons"
 
 export const dynamic = "force-dynamic"
@@ -52,6 +53,17 @@ export default function RefineProvider({ children }: { children: React.ReactNode
                         label: "Partner Applications",
                         icon: <UserOutlined />,
                       },
+                    },
+                    {
+                    name: "verified_partners",
+                    list: "/verified-partners",
+                    show: "/verified-partners/show/:id",
+                    edit: "/verified-partners/edit/:id",
+                    meta: {
+                      canDelete: true,
+                      label: "Verified Partners",
+                      icon: <CheckCircleOutlined />,
+                    },
                     },
                     {
                       name: "support_tickets",
