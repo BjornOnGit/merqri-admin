@@ -8,6 +8,8 @@ const updateStatusSchema = z.object({
   status: z.enum(["pending", "approved", "rejected"]),
 })
 
+type UpdateStatusInput = z.infer<typeof updateStatusSchema>
+
 export async function updatePartnerStatus(formData) {
   try {
     const validatedData = updateStatusSchema.parse(formData)
