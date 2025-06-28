@@ -10,7 +10,6 @@ const nextConfig = {
   transpilePackages: ["@refinedev/antd", "@refinedev/core"],
   output: "standalone",
   trailingSlash: false,
-  generateStaticParams: false,
 };
 
 export default nextConfig;
