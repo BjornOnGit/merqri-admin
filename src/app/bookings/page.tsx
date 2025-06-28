@@ -1,14 +1,13 @@
 import { Suspense } from "react"
 import { BookingList } from "@/components/bookings"
-import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd"
-import { Header } from "@/components/header"
+import { AdminLayout } from "@/components/layout/AdminLayout"
 
 export const dynamic = "force-dynamic"
 function BookingListContent() {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
+    <AdminLayout>
       <BookingList />
-    </ThemedLayoutV2>
+    </AdminLayout>
   )
 }
 

@@ -1,17 +1,17 @@
 "use client";
 
 import { Suspense } from "react";
-import { ErrorComponent, ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd";
-import { Header } from "@components/header";
+import { ErrorComponent } from "@refinedev/antd";
 import { Authenticated } from "@refinedev/core";
+import { AdminLayout } from "@components/layout/AdminLayout";
 
 export const dynamic = "force-dynamic"
 
 function NotFoundContent(){
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />} Sider={(props) => <ThemedSiderV2 {...props} fixed />}>
+    <AdminLayout>
       <ErrorComponent />
-    </ThemedLayoutV2>
+    </AdminLayout>
   )
 }
 export default function NotFound() {

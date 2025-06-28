@@ -1,13 +1,12 @@
 import { Suspense } from "react"
 import { ContactList } from "@/components/contacts"
-import { ThemedLayoutV2 } from "@refinedev/antd"
-import { Header } from "@/components/header"
+import { AdminLayout } from "@/components/layout/AdminLayout"
 
 function ContactListContent() {
   return (
-    <ThemedLayoutV2 Header={() => <Header sticky />}>
+    <AdminLayout>
       <ContactList />
-    </ThemedLayoutV2>
+    </AdminLayout>
   )
 }
 
