@@ -16,7 +16,7 @@ export const PartnerList: React.FC<IResourceComponentsProps> = () => {
       <Table {...tableProps} rowKey="id" scroll={{ x: 1200 }}>
         <Table.Column dataIndex="id" title="ID" width={80} />
         <Table.Column dataIndex="company_name" title="Company Name" width={200} />
-        <Table.Column dataIndex="contact_person" title="Contact Person" width={150} />
+        <Table.Column dataIndex="contact_name" title="Contact Person" width={150} />
         <Table.Column dataIndex="email" title="Email" width={200} />
         <Table.Column dataIndex="phone" title="Phone" width={150} />
         <Table.Column dataIndex="city" title="City" width={120} />

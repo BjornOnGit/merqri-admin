@@ -129,7 +129,7 @@ export const PartnerShow: React.FC = () => {
                   <Text strong>Services Offered:</Text>
                   <br />
                   <div style={{ marginTop: 8 }}>
-                    {record?.residential_moving && <TagField value="Residential Moving" color="blue" />}
+                    {record?.services && <TagField value="Local" color="blue" />}
                     {record?.commercial_moving && <TagField value="Commercial Moving" color="green" />}
                     {record?.long_distance && <TagField value="Long Distance" color="orange" />}
                     {record?.packing_services && <TagField value="Packing Services" color="purple" />}
@@ -141,7 +141,9 @@ export const PartnerShow: React.FC = () => {
                 <div>
                   <Text strong>Insurance Coverage:</Text>
                   <br />
-                  <TextField value={record?.has_insurance} />
+                  <TagField 
+                  value={record?.has_insurance ? "True" : "False"}
+                  color={record?.has_insurance ? "green" : "red"} />
                 </div>
               </Col>
             </Row>
