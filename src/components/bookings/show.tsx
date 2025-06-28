@@ -1,11 +1,13 @@
 "use client"
-import { useShow } from "@refinedev/core"
-import { Show, TextField, NumberField } from "@refinedev/antd"
+
+import type React from "react"
+import { useShow, type IResourceComponentsProps } from "@refinedev/core"
+import { Show, TextField, DateField, NumberField } from "@refinedev/antd"
 import { Typography, Tag, Space } from "antd"
 
 const { Title } = Typography
 
-export const BookingShow = () => {
+export const BookingShow: React.FC<IResourceComponentsProps> = () => {
   const { queryResult } = useShow({
     resource: "bookings",
   })
@@ -59,29 +61,17 @@ export const BookingShow = () => {
       <Title level={5}>Phone</Title>
       <TextField value={record?.phone} />
 
-      <Title level={5}>Pickup Address</Title>
-      <TextField value={record?.pickup_address} />
+      <Title level={5}>Pickup Location</Title>
+      <TextField value={record?.pickup_location} />
 
-      <Title level={5}>Pickup City</Title>
-      <TextField value={record?.pickup_city} />
+      <Title level={5}>Destination</Title>
+      <TextField value={record?.destination} />
 
-      <Title level={5}>Pickup State</Title>
-      <TextField value={record?.pickup_state} />
+      <Title level={5}>Pickup Date</Title>
+      <TextField value={record?.pickup_date ? new Date(record.pickup_date).toLocaleDateString() : "Not set"} />
 
-      <Title level={5}>Delivery Address</Title>
-      <TextField value={record?.delivery_address} />
-
-      <Title level={5}>Delivery City</Title>
-      <TextField value={record?.delivery_city} />
-
-      <Title level={5}>Delivery State</Title>
-      <TextField value={record?.delivery_state} />
-
-      <Title level={5}>Moving Date</Title>
-      <TextField value={record?.moving_date ? new Date(record.moving_date).toLocaleDateString() : "Not set"} />
-
-      <Title level={5}>Moving Time</Title>
-      <TextField value={record?.moving_time || "Not set"} />
+      <Title level={5}>Pickup Time</Title>
+      <TextField value={record?.pickup_time || "Not set"} />
 
       <Title level={5}>Property Type</Title>
       <TextField value={record?.property_type} />
@@ -92,9 +82,12 @@ export const BookingShow = () => {
       <Title level={5}>Special Instructions</Title>
       <TextField value={record?.special_instructions || "None"} />
 
-      <Title level={5}>Status</Title>
+      <Title level={5}>Passenger Count</Title>
+      <NumberField value={record?.passenger_count} />
+
+      <Title level={5}>Booking Status</Title>
       <Space>
-        <Tag color={getStatusColor(record?.status)}>{record?.status?.toUpperCase() || "PENDING"}</Tag>
+        <Tag color={getStatusColor(record?.booking_status)}>{record?.booking_status?.toUpperCase() || "PENDING"}</Tag>
       </Space>
 
       <Title level={5}>Payment Status</Title>
@@ -108,7 +101,7 @@ export const BookingShow = () => {
       <TextField value={record?.total_amount ? `₦${record.total_amount.toLocaleString()}` : "Not calculated"} />
 
       <Title level={5}>Created At</Title>
-      <TextField value={record?.created_at ? new Date(record.created_at).toLocaleString() : ""} />
+      <DateField value={record?.created_at} />
 
       <Title level={5}>Updated At</Title>
       <TextField value={record?.updated_at ? new Date(record.updated_at).toLocaleString() : ""} />

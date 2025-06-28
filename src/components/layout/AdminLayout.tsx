@@ -16,9 +16,9 @@ export function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <ThemedSiderV2 fixed />
-      <Layout>
+      <Layout style={{ marginLeft: "100px" }}>
         <Header sticky />
-        <Content style={{ padding: "24px", marginLeft: "200px" }}>{children}</Content>
+        <Content style={{ padding: "24px", minHeight: "calc(100vh - 64px)" }}>{children}</Content>
       </Layout>
     </Layout>
   )

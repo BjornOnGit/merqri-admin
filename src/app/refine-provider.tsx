@@ -78,6 +78,7 @@ export default function RefineProvider({ children }: { children: React.ReactNode
                     syncWithLocation: true,
                     warnWhenUnsavedChanges: true,
                     projectId: "merqri-admin",
+                    disableTelemetry: true,
                   }}
                 >
                   {children}

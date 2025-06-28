@@ -12,7 +12,7 @@ export const PartnerList: React.FC<IResourceComponentsProps> = () => {
   })
 
   return (
-    <List resource="partner_aplications">
+    <List resource="partner_applications">
       <Table {...tableProps} rowKey="id" scroll={{ x: 1200 }}>
         <Table.Column dataIndex="id" title="ID" width={80} />
         <Table.Column dataIndex="company_name" title="Company Name" width={200} />
